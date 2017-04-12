@@ -12,14 +12,15 @@ Use H2 database
 
 Серия уроков:
 
-Создание базы данных JDBC. 
-Создание entity слоя JDBC. 
-Создание DAO и Service слоев 
-Hibernate XML mapping 
-Hibernate annotations mapping 
-Создание DAO и Service слоев Hibernate annotations mapping 
-Spring Data JPA 
-Hibernate теория 
-Spring Data JPA теория 
+    Создание базы данных JDBC. 
+    Создание entity слоя JDBC. 
+    Создание DAO и Service слоев 
+    Hibernate XML mapping 
+    Hibernate annotations mapping 
+    Создание DAO и Service слоев Hibernate annotations mapping 
+    Spring Data JPA 
+    Hibernate теория 
+    Spring Data JPA теория 
+    
 
 For DB admining (with draw scheme of DB in graphical format) http://dbeaver-portable.en.lo4d.com/download/mirror-ex2
