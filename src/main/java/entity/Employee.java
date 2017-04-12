@@ -1,32 +1,61 @@
 package entity;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
 /**
  * Created by user on 4/8/2017.
  */
+
+@Entity
+@Table(name="EMPLOYEE")
 public class Employee {
 
+    /**
+     * Generate primary key
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "FIRST_NAME", length = 20)
     private String firstName;
+
+    @Column(name = "LAST_NAME", length = 20)
     private String lastName;
+
+    @Column(name = "BIRTHDAY")
     private Date birthday;
 
     /**
-     * For correct work Hibernate framework,
-     * need determinate object, with class Employee bind
+    * For correct work Hibernate framework,
+    * need determinate object, with class Employee bind
+    */
+    /**
+     * Generate relation one-to-one
      */
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-	/**
+
+    /**
 	 * Need for bind with class "Project"
      * will be
      * unique object Project <= bind => unique object Employee
      */
+    /**
+     * Generate relation many-to-many
+     * EMPL_PROJ - help table name
+     */
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "EMPL_PROJ",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROJECT_ID")
+    )
     private Set<Project> projects;
-    private long addressId;
-    private Address addressById;
 
     public Employee() {}
 
@@ -110,31 +139,6 @@ public class Employee {
         this.address = address;
     }
 
-
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (id != employee.id) return false;
-        if (firstName != null ? !firstName.equals(employee.firstName) : employee.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
-        return birthday != null ? birthday.equals(employee.birthday) : employee.birthday == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
-        return result;
-    }
-*/
-
     public Set<Project> getProjects() {
         return projects;
     }
@@ -151,47 +155,5 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
                 '}';
-    }
-
-    public long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (id != employee.id) return false;
-        if (addressId != employee.addressId) return false;
-        if (firstName != null ? !firstName.equals(employee.firstName) : employee.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
-        if (birthday != null ? !birthday.equals(employee.birthday) : employee.birthday != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (addressId ^ (addressId >>> 32));
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
-        return result;
-    }
-
-    public Address getAddressById() {
-        return addressById;
-    }
-
-    public void setAddressById(Address addressById) {
-        this.addressById = addressById;
     }
 }

@@ -1,13 +1,22 @@
 package entity;
 
+import javax.persistence.*;
+
 import java.util.Set;
 
 /**
  * Created by user on 4/8/2017.
  */
+
+@Entity
+@Table(name="PROJECT")
 public class Project {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "TITLE", length = 20)
     private String title;
 
     /**
@@ -15,9 +24,14 @@ public class Project {
      * will be
      * unique object Project <= bind => unique object Employee
      */
+    /**
+     * Generate relation many-to-many
+     * EMPL_PROJ - help table name
+     */
+    @ManyToMany(mappedBy = "projects")
     private Set<Employee> employees;
 
-    public Project() {};
+    public Project() {}
 
     /**
      * Getter for property 'id'.
