@@ -5,7 +5,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by user on 4/8/2017.
+ * Class Project for table PROJECTS
+ * @since  4/8/2017.
  */
 
 @Entity
@@ -23,8 +24,6 @@ public class Project {
      * Need for bind with class "Employee"
      * will be
      * unique object Project <= bind => unique object Employee
-     */
-    /**
      * Generate relation many-to-many
      * EMPL_PROJ - help table name
      */
@@ -77,24 +76,6 @@ public class Project {
         this.employees = employees;
     }
 
-    /*    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Project project = (Project) o;
-
-        if (id != project.id) return false;
-        return title != null ? title.equals(project.title) : project.title == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        return result;
-    }*/
-
     @Override
     public String toString() {
         return "Project{" +
@@ -103,23 +84,5 @@ public class Project {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Project project = (Project) o;
-
-        if (id != project.id) return false;
-        if (title != null ? !title.equals(project.title) : project.title != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        return result;
-    }
 }

@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  * Created by root on 4/12/17.
+ * Need for create Hibernate session, and close it
  */
 public class HibernateUtil {
 	private static SessionFactory sessionFactory = buildSessionFactory();
@@ -13,6 +14,7 @@ public class HibernateUtil {
 		try {
 			return new Configuration().configure().buildSessionFactory();
 		} catch (Throwable ex) {
+			System.out.println("Initial SessionFactory creation failed." + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
 	}
@@ -21,6 +23,9 @@ public class HibernateUtil {
 		return sessionFactory;
 	}
 
+	/**
+	 * Need for close Hibernate session
+	 */
 	public static void shutdown() {
 		getSessionFactory().close();
 	}
