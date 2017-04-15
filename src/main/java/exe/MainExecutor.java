@@ -1,4 +1,4 @@
-package MainExecutor;
+package exe;
 
 
 import entity.Address;
@@ -98,10 +98,5 @@ public class MainExecutor {
 		System.out.print(employeeRepository.count());
 
 		System.out.print("\n\n");
-
-
-
-
-
 	}
 }
