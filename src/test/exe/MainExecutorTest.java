@@ -2,6 +2,7 @@ package exe;
 
 import entity.Address;
 import entity.Employee;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import repository.AddressRepository;
@@ -58,6 +59,16 @@ public class MainExecutorTest {
 
         employeeRepository.save(testEmployee);
 
+        /**.
+         * Check exist row in DB
+         */
         assertThat(1L, is(employeeRepository.count()));
+
+        /**.
+         *  Check work of method "employeeRepository.findByFirstnameAndLastname"
+         */
+        String etalon = "Employee{id=1, firstName='James', lastName='Gordon', birthday=1939-05-01}";
+        String answerFromDB = employeeRepository.findByFirstnameAndLastname("James","Gordon").toString();
+        assertEquals(etalon, answerFromDB);
     }
 }
