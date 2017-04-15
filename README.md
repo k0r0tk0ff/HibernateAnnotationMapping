@@ -24,3 +24,17 @@ Use H2 database
     
 
 For DB admining (with draw scheme of DB in graphical format) http://dbeaver-portable.en.lo4d.com/download/mirror-ex2
+
+Основная документация -
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+
+CrudRepository документация: 
+http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html
+
+JpaRepository документация: 
+http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+
+-------------------
+Репозиторий автора 
+https://github.com/kuidreS/Hibernate-Annotation-Mapping
+
