@@ -85,9 +85,23 @@ public class MainExecutor {
 
 		System.out.println("*********************************************** \n");
 
-		/*********** Get all Employee ******/
+		/**** Get Employee "James","Gordon" from custom method ******/
+		System.out.println(employeeRepository.findByFirstnameAndLastname("James","Gordon"));
+
+		System.out.println("*********************************************** \n");
+
+		/**
+		 *  Get count of column in table Employee
+		 *  (embedded method)
+		 */
+		System.out.print("\n Count of rows in table Employees is: ");
+		System.out.print(employeeRepository.count());
+
+		System.out.print("\n\n");
 
 
-		//System.out.println(employeeRepository.findByFirstnameAndLastname("Jame","Gordon"));
+
+
+
 	}
 }
